@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ 'Edit' if job else 'Add' }} Job</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.title.label }} {{ form.title(class="form-control") }}
+    {{ form.description.label }} {{ form.description(class="form-control") }}
+    {{ form.pay_rate.label }} {{ form.pay_rate(class="form-control") }}
+    {{ form.client_id.label }} {{ form.client_id(class="form-control") }}
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

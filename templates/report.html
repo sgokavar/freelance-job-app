@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Freelancer Report</h2>
+
+<p><strong>Total Freelancers Found:</strong> {{ total }}</p>
+{% if most_common_avail %}
+<p><strong>Most Common Availability:</strong> {{ most_common_avail }}</p>
+{% endif %}
+
+<h3>Filters</h3>
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="skill" placeholder="Filter by skill" class="form-control"
+               value="{{ request.args.get('skill', '') }}">
+    </div>
+    <div class="col-md-4">
+        <input type="text" name="availability" placeholder="Filter by availability" class="form-control"
+               value="{{ request.args.get('availability', '') }}">
+    </div>
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-info">Apply Filters</button>
+    </div>
+</form>
+
+<h3>Filtered Results</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Skills</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in freelancers %}
+        <tr>
+            <td>{{ f.name }}</td>
+            <td>{{ f.email }}</td>
+            <td>{{ f.skills }}</td>
+            <td>{{ f.availability }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4">No freelancers match the filters.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

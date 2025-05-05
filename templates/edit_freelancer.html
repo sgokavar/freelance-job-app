@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Freelancer</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name(class="form-control") }}
+    {{ form.email.label }} {{ form.email(class="form-control") }}
+    {{ form.skills.label }} {{ form.skills(class="form-control") }}
+    {{ form.availability.label }} {{ form.availability(class="form-control") }}
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
